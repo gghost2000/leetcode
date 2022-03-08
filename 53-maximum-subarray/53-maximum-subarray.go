@@ -1,11 +1,6 @@
 func maxSubArray(nums []int) int {
     size := len(nums)
-    
-	if size == 1 {
-		return nums[0]
-	}
-
-    
+        
 	dp := make([]int, 0)
 	dp = append(dp, 0, nums[0])
 
