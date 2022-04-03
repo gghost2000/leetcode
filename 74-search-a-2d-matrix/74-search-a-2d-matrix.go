@@ -1,18 +1,25 @@
 func searchMatrix(matrix [][]int, target int) bool {
-    result := false
-
-	if matrix[0][0] > target || matrix[len(matrix)-1][len(matrix[0])-1] < target {
-		return result
-	}
+	arr := make([]int, 0)
 
 	for i := 0; i < len(matrix); i++ {
-		for j := 0; j < len(matrix[0]); j++ {
-			if matrix[i][j] == target {
-				result = true
-				break
-			}
-		}
+		arr = append(arr, matrix[i]...)
 	}
 
-	return result
+	low := 0
+	high := len(arr) - 1
+
+	for low <= high {
+        mid := (low + high)/2
+
+		if arr[mid] == target {
+			return true 
+		} else if arr[mid] < target {
+			low = mid + 1
+		} else {
+			high = mid - 1
+		}
+
+	}
+
+	return false
 }
